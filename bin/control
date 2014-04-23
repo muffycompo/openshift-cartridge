@@ -113,7 +113,7 @@ function start() {
   fi
 
   envf="$OPENSHIFT_REPO_DIR/configuration/vertx.env"
-  #  Source environment if it exists.
+  #  Source environment if it exists. 
   [ -f "${envf}" ]  &&  source "${envf}"
 
   # Determine correct vertx run command (run, runmod, runzip). TODO: A nice feature would have vertx have one run command

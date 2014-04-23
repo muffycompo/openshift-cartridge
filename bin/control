@@ -4,11 +4,12 @@ source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 version=${OPENSHIFT_VERTX_VERSION}
 milestone=${OPENSHIFT_VERTX_MILESTONE}
-dist=vert.x-$version$milestone
+vertx_dist=vert.x-$version$milestone
+cartridge_type="Vert.x"
 
 logf="$OPENSHIFT_VERTX_LOG_DIR/console.log"
 
-VERTX_HOME=${OPENSHIFT_VERTX_DIR}/usr/$dist
+VERTX_HOME=${OPENSHIFT_VERTX_DIR}/usr/$vertx_dist
 VERTX_PID_FILE=${OPENSHIFT_HOMEDIR}/app-root/runtime/vertx.pid
 
 # Check if the vertx process is running
@@ -113,7 +114,7 @@ function start() {
 
   envf="$OPENSHIFT_REPO_DIR/configuration/vertx.env"
   #  Source environment if it exists.
-  [ -f "$envf" ]  &&  source "$envf"
+  [ -f "${envf}" ]  &&  source "${envf}"
 
   # Determine correct vertx run command (run, runmod, runzip). TODO: A nice feature would have vertx have one run command
   if [ "$vertx_zip" ]; then
